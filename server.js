@@ -1,8 +1,15 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const usersRouter = require('./routes/api/users');
+
+const app = express();
+
+//Body Parser middleware
+// It will make to excess of req.body.value
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //DB config
 const db = require('./config/keys').mongoURI;
@@ -13,15 +20,10 @@ mongoose
     .then(() => console.log('MongoDB connected Successfully'))
     .catch(err => console.log(`MongoDB Connection ERROR: ${err}`));
 
-
-
-
 app.get('/', (req, res) => res.send('Hello World'));
 
 //Use Routes
-
 app.use('/api/users', usersRouter);
-
 
 const port = process.env.PORT || 3000;
 
