@@ -7,9 +7,9 @@ const usersRouter = require('./routes/api/users');
 
 const app = express();
 
-//Body Parser middleware
+// Body Parser middleware
 // It will make to excess of req.body.value
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //DB config

@@ -1,120 +1,120 @@
 const mongooose = require('mongoose');
-const Schema = mongoose.Schema;\
+const Schema = mongoose.Schema; \
 
 //Create Schema
 const ProfileSchema = new Schema({
-  user : {
-    type : Schema.Type.ObjectId,
+  user: {
+    type: Schema.Type.ObjectId,
     ref: 'users'
   },
-  handle : {
+  handle: {
     type: String,
-    required : true,
-    max : 40
+    required: true,
+    max: 40
   },
-  company : {
-    type : String,
-  },
-  website : {
-    type : String,
-  },
-  location : {
-    type : String
-  },
-  status : {
+  company: {
     type: String,
-    required : true
   },
-  skills : {
-    type : {String},
-    required : true,
+  website: {
+    type: String,
   },
-  bio : {
-    type : String
+  location: {
+    type: String
   },
-  githubusername : {
-    type : String
+  status: {
+    type: String,
+    required: true
   },
-  experience : [
+  skills: {
+    type: { String },
+    required: true,
+  },
+  bio: {
+    type: String
+  },
+  githubusername: {
+    type: String
+  },
+  experience: [
     {
-      title : {
-        title : string,
-        required : true
+      title: {
+        title: string,
+        required: true
       },
-      company : {
+      company: {
         type: String,
-        required : true
+        required: true
       },
-      location : {
+      location: {
         type: String,
-        required : true
+        required: true
       },
-      from : {
+      from: {
         type: Date,
-        required : true
+        required: true
       },
-      to : {
+      to: {
         type: Date
       },
-      current : {
+      current: {
         type: Boolean,
-        defalut : false
+        defalut: false
       },
-      description : {
+      description: {
         type: String
       }
     }
   ],
-  education : [
+  education: [
     {
-      school : {
-        title : string,
-        required : true
+      school: {
+        title: string,
+        required: true
       },
-      degree : {
+      degree: {
         type: String,
-        required : true
+        required: true
       },
-      fieldofstudy : {
+      fieldofstudy: {
         type: String,
-        required : true
+        required: true
       },
-      from : {
+      from: {
         type: Date,
-        required : true
+        required: true
       },
-      to : {
+      to: {
         type: Date
       },
-      current : {
+      current: {
         type: Boolean,
-        defalut : false
+        defalut: false
       },
-      description : {
+      description: {
         type: String
       }
     }
   ],
-  social : {
-    youtube : {
+  social: {
+    youtube: {
       type: String
     },
-    twiter : {
+    twiter: {
       type: String
     },
-    facebook : {
+    facebook: {
       type: String
     },
-    linkedin : {
+    linkedin: {
       type: String
     },
-    instagram : {
+    instagram: {
       type: String
     }
   },
-  date : {
-    type : Date,
-    defalut : Date.now
+  date: {
+    type: Date,
+    defalut: Date.now
   }
 });
 
