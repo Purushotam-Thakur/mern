@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import authReducer from '../../reducers/authReducer';
+//import authReducer from '../../reducers/authReducer';
 
 class Register extends Component {
     constructor() {
