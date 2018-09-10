@@ -7,7 +7,7 @@ import Spinner from '../common/Spinner';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.prop.getCurrentProfile();
+    this.props.getCurrentProfile();
   }
 
   render() {
