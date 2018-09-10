@@ -5,38 +5,38 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 
-class Dashboard extends Component{
+class Dashboard extends Component {
   componentDidMount() {
     this.prop.getCurrentProfile();
   }
 
-  render(){
+  render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-    
+
     let dashboardContent;
-    
-    if(profile === null || loading){
+
+    if (profile === null || loading) {
       dashboardContent = <Spinner />;
     } else {
       // Check if logged in user has profile data
-      if(Object.keys(profile).length > 0){
-          dashboardContent = <h4> TODO: DISPLAY PROFILE</h4>
-         } else {
-          // User is logged in but has no profile
-           dashboardComponent = (
-            <div>
-              <p className="lead text-muted">Welcome { user.name }</p>
-              <p>You have not yet setup a profile, please add some info</p>
-              <link to="/create-profile" className="btn btn-lg btn-info">
-                Create Profile
-              </link>
-             </div>
-           )
-         }
+      if (Object.keys(profile).length > 0) {
+        dashboardContent = <h4> TODO: DISPLAY PROFILE</h4>
+      } else {
+        // User is logged in but has no profile
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">Welcome {user.name}</p>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to="/create-profile" className="btn btn-lg btn-info">
+              Create Profile
+              </Link>
+          </div>
+        )
+      }
     }
-    
-    return(
+
+    return (
       <div className="dashboard">
         <div className="container">
           <div className="row">
@@ -62,4 +62,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default Dashboard;
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 
@@ -59,20 +58,20 @@ class Login extends Component {
                             <p className="lead text-center">Sign in to your DevConnector account</p>
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
-                                    placeholder="Email Address" 
+                                    placeholder="Email Address"
                                     name="email"
                                     type="email"
-                                    value:{this.state.email}
-                                    onChange: {this.onChange}
+                                    value={this.state.email}
+                                    onChange={this.onChange}
                                     error={errors.email}
                                 />
-            
+
                                 <TextFieldGroup
-                                    placeholder="Password" 
+                                    placeholder="Password"
                                     name="password"
                                     type="password"
-                                    value:{this.state.password}
-                                    onChange: {this.onChange}
+                                    value={this.state.password}
+                                    onChange={this.onChange}
                                     error={errors.password}
                                 />
                                 <input type="submit" className="btn btn-info btn-block mt-4" />

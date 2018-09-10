@@ -4,10 +4,10 @@ import spinner from './spinner.gif';
 export default () => {
   return (
     <div>
-      <img 
-        src={spinner} 
-        stype={{width:200px, margin: 'auto', display: 'block'}}
-        slt="Loading..."/>
+      <img
+        src={spinner}
+        stype={{ width: '200px', margin: 'auto', display: 'block' }}
+        alt="Loading..." />
     </div>
   )
 }
