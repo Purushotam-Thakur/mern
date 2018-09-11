@@ -15,7 +15,7 @@ const InputGroup = ({
     <div className="input-group mb-3">
       <div className="input-group-prepend">
         <span className="Input-group-text">
-          <i className(icon)>
+          <i className={icon} />
         </span>
       </div>
       <input
@@ -41,7 +41,7 @@ InputGroup.propTypes = {
 }
 
 InputGroup.defaultProps = {
-  type: text
+  type: 'text'
 }
 
 export default InputGroup;

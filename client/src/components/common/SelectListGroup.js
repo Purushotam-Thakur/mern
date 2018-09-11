@@ -13,7 +13,7 @@ const SelectListGroup = ({
   const selectOprions = options.map(option => (
     <option key={option.label} value={option.value}>
       {option.label}
-    </options
+    </option>
   ))
 
   return (
@@ -23,7 +23,7 @@ const SelectListGroup = ({
         name={name}
         value={value}
         onChange={onChange}>
-        {selectOption}
+        {selectOprions}
       </select>
       {info && <small className="form-text text-muted">{info}</small>}
       {error && (<div className='invalid-feedback'>{error}</div>)}
