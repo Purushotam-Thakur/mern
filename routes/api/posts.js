@@ -15,7 +15,7 @@ const validatePostInput = require('../../validation/post');
 // @route GET api/posts
 // @desc Get post
 // @access Public
-router.get('/', (res, req) => {
+router.get('/', (req, res) => {
   Post.find()
     .sort({date: -1})
     .then(post => res.json(posts))
@@ -24,15 +24,15 @@ router.get('/', (res, req) => {
           );
 });
 
-// @route GET api/posts/:id
-// @desc Get post by id
-// @access Public
-router.get('/:id', (res, req) => {
-  Post.findById({req.params.id})
-    .then(post => res.json(posts))
-    .catch(err => 
-           res.status(404).json({nopostfound: 'No post found with that ID'})
-          );
+// @route   GET api/posts/:id
+// @desc    Get post by id
+// @access  Public
+router.get('/:id', (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => res.json(post))
+    .catch(err =>
+      res.status(404).json({ nopostfound: 'No post found with that ID' })
+    );
 });
 
 // @route POST api/posts
@@ -119,9 +119,9 @@ router.post('/unlike/:id', passport.authenticate('jwt', {session: false}), (req,
               .json({notliked : 'You have not yet liked this post'});
            }
         
-        // Add user id to like array
-        const removeIndex = post.likes;
-          .map(item => item.user.toString()))
+        // Get remove index
+        const removeIndex = post.likes
+          .map(item => item.user.toString())
           .indexOf(req.user.id);
         
         // Splice out of array

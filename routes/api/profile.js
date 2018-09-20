@@ -34,7 +34,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 //@route GET api/profile/all
 //@desc Get all profiles
 //@access Public
-router.ger('/all', (req, res) => {
+router.get('/all', (req, res) => {
   const errors = {};
   Profile.findOne( )
     .populate('user',['name', 'avatar'])
@@ -90,7 +90,6 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
-
     //check validation
     if (!isValid) {
       // Return any errors with 400 status
@@ -255,18 +254,18 @@ router.delete(
     .catch(err => res.status(400).json(err));
 });
 
-//@route DELETE api/profile
-//@desc Delete user and profile
-//@access Private
+// @route   DELETE api/profile
+// @desc    Delete user and profile
+// @access  Private
 router.delete(
   '/',
-  passport.authenticate('jwt', {session: false}),
-  (res, req) => {
-    Profile.findOneAndRemove({user: req.user.id}).then(() => {
-      User.findOneAndRemove({_id: req.user.id}).then(() => 
-        res.json({success:true});
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        res.json({ success: true })
       );
-    })
+    });
   }
 );
 

@@ -1,10 +1,10 @@
-const mongooose = require('mongoose');
-const Schema = mongoose.Schema; \
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 //Create Schema
 const ProfileSchema = new Schema({
   user: {
-    type: Schema.Type.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'users'
   },
   handle: {
@@ -38,7 +38,7 @@ const ProfileSchema = new Schema({
   experience: [
     {
       title: {
-        title: string,
+        type: String,
         required: true
       },
       company: {
@@ -68,7 +68,7 @@ const ProfileSchema = new Schema({
   education: [
     {
       school: {
-        title: string,
+        type: String,
         required: true
       },
       degree: {

@@ -58,7 +58,11 @@ class CreateProfile extends Component {
       instagram: this.state.instagram,
     }
 
-    this.props.createProfile(profileData, this.props.history)
+    this.props.createProfile(profileData, this.props.history);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -72,9 +76,9 @@ class CreateProfile extends Component {
           <InputGroup
             placeholder="Twitter Profile URL"
             name="twitter"
-            icon=''
+            icon='fab fa-twitter'
             value={this.state.twitter}
-            onChange={this.state.onChange}
+            onChange={this.onChange}
             error={errors.twitter}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
@@ -83,7 +87,7 @@ class CreateProfile extends Component {
             name="facebook"
             icon='fab fa-facebook'
             value={this.state.facebook}
-            onChange={this.state.onChange}
+            onChange={this.onChange}
             error={errors.facebook}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
@@ -92,7 +96,7 @@ class CreateProfile extends Component {
             name="linkedin"
             icon='fab fa-linkedin'
             value={this.state.linkedin}
-            onChange={this.state.onChange}
+            onChange={this.onChange}
             error={errors.linkedin}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
@@ -101,7 +105,7 @@ class CreateProfile extends Component {
             name="youtube"
             icon='fab fa-youtube'
             value={this.state.youtube}
-            onChange={this.state.onChange}
+            onChange={this.onChange}
             error={errors.youtube}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
@@ -110,7 +114,7 @@ class CreateProfile extends Component {
             name="instagram"
             icon='fab fa-instagram'
             value={this.state.instagram}
-            onChange={this.state.onChange}
+            onChange={this.onChange}
             error={errors.instagram}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
@@ -120,7 +124,7 @@ class CreateProfile extends Component {
 
     // Select options for status
     const options = [
-      { label: '* SAelect Professional Status', value: 0 },
+      { label: '* Select Professional Status', value: 0 },
       { label: 'Developer', value: 'Developer' },
       { label: 'Junior Developer', value: 'Junior Developer' },
       { label: 'Senior Developer', value: 'Senior Developer' },
@@ -146,32 +150,32 @@ class CreateProfile extends Component {
                   placeholder="* Profile Handle"
                   name="handle"
                   value={this.state.handle}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.handle}
                   info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
                 <SelectListGroup
                   placeholder="Status"
-                  name="Status"
+                  name="status"
                   value={this.state.status}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.status}
                   options={options}
                   info="Give us an idea of where you are at in your career"
                 />
                 <TextFieldGroup
                   placeholder="Company"
-                  name="handle"
-                  value={this.state.handle}
-                  onChange={this.state.onChange}
-                  error={errors.handle}
+                  name="company"
+                  value={this.state.company}
+                  onChange={this.onChange}
+                  error={errors.company}
                   info="Could be your own company or one you work for"
                 />
                 <TextFieldGroup
                   placeholder="website"
                   name="website"
                   value={this.state.website}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.website}
                   info="Could be your own or a company website"
                 />
@@ -179,7 +183,7 @@ class CreateProfile extends Component {
                   placeholder="Location"
                   name="location"
                   value={this.state.location}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.location}
                   info="City & state suggested (eg. Boston, MA)"
                 />
@@ -187,7 +191,7 @@ class CreateProfile extends Component {
                   placeholder="Skills"
                   name="skills"
                   value={this.state.skills}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.skills}
                   info="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
                 />
@@ -195,7 +199,7 @@ class CreateProfile extends Component {
                   placeholder="Github Username"
                   name="githubusername"
                   value={this.state.githubusername}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.githubusername}
                   info="If you want your latest repos and a Github link, include your username"
                 />
@@ -203,7 +207,7 @@ class CreateProfile extends Component {
                   placeholder="A short bio yourself"
                   name="bio"
                   value={this.state.bio}
-                  onChange={this.state.onChange}
+                  onChange={this.onChange}
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
@@ -221,6 +225,11 @@ class CreateProfile extends Component {
                   <span className="text-muted">Optional</span>
                 </div>
                 {socialInputs}
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>

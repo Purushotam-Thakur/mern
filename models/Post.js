@@ -20,7 +20,7 @@ const PostSchema = new Schema({
   likes: [
     {
       user : {
-        type: Schema.Type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref : 'users'
       }
     }
@@ -28,24 +28,24 @@ const PostSchema = new Schema({
   comments: [
     {
       user : {
-        type: Schema.Type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref : 'users'
+      },
+      text : {
+        type: String,
+        required : true
+      },
+      name : {
+        type: String,
+        required: true
+      },
+      avatar: {
+        type: String
+      },
+      data : {
+        type: Date,
+        defalut: Date.now
       }
-    },
-    text : {
-      type: String,
-      required : true
-    },
-    name : {
-      type: String,
-      required: true
-    },
-    avatar: {
-      type: String
-    },
-    data : {
-      type: Date,
-      defalut: Date.now
     }
   ],
    data : {
@@ -54,4 +54,4 @@ const PostSchema = new Schema({
     }
 });
 
-module.exports = Post = mongoose.model({'post', PostSchema})
+module.exports = Post = mongoose.model('post', PostSchema)
