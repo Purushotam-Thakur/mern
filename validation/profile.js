@@ -16,7 +16,7 @@ module.exports = function validateProfileInput(data) {
     errors.handle = 'Profile handle is required';
   }
 
-  if (validator.isEmpty(data.staus)) {
+  if (validator.isEmpty(data.status)) {
     errors.staus = 'Status handle is required';
   }
 
