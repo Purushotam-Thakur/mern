@@ -216,7 +216,7 @@ router.delete(
   '/experience/:exp_id', 
   passport.authenticate('jwt', {session: false}), 
   (req, res) => {
-    console.log('++++++++++++++++++++++',req.params);
+
     Profile.findOne({user: req.user.id}).then(profile => {
       // Get remove index
       const removeIndex = profile.experience
