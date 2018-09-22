@@ -6,14 +6,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addEducation } from '../../actions/profileActions';
 
-
 class AddEducation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			school: '',
 			degree: '',
-			fielofstudy: '',
+			fieldofstudy: '',
 			from: '',
 			to: '',
 			current: false,
@@ -24,7 +23,7 @@ class AddEducation extends Component {
 
 		this.onChange = this.onChange.bind(this);
 		this.onCheck = this.onCheck.bind(this);
-		this.onCheck = this.onCheck.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -46,7 +45,7 @@ class AddEducation extends Component {
 			description: this.state.description,
 		};
 
-		this.props.AddEducation(eduData, this.props.history);
+		this.props.addEducation(eduData, this.props.history);
 	}
 
 	onChange(e) {
@@ -75,7 +74,7 @@ class AddEducation extends Component {
 							<h1 className="display-4 text-center">Add Education</h1>
 							<p className="lead text-center">Add any school, bootcamp, etc that you have attended</p>
 							<small className="d-block pb-3">* = required field</small>
-							<form onsubmit={this.onsubmit}>
+							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
 									placeholder="* School"
 									name="school"
@@ -121,7 +120,7 @@ class AddEducation extends Component {
 										name="current"
 										value={this.state.current}
 										checked={this.state.current}
-										onChange={this.onChange}
+										onChange={this.onCheck}
 										id="current"
 									/>
 									<label htmlFor="current" className="form-check-label">
@@ -151,7 +150,7 @@ class AddEducation extends Component {
 }
 
 AddEducation.propTypes = {
-	AddEducation: PropTypes.func.isRequired,
+	addEducation: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired
 }

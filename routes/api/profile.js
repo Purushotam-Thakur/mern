@@ -182,8 +182,8 @@ router.post('/experience', passport.authenticate('jwt', {session: false}), (req,
 //@desc Add education to profile
 //@access Private
 router.post('/education', passport.authenticate('jwt', {session: false}), (req, res) => {
-   const { errors, isValid } = validateExperienceInput(req.body);
-
+   const { errors, isValid } = validateEducationInput(req.body);
+  
     //check validation
     if (!isValid) {
       // Return any errors with 400 status
@@ -203,7 +203,7 @@ router.post('/education', passport.authenticate('jwt', {session: false}), (req, 
       }
       
       //Add to exp array
-      profile.experience.unshift(newEdu);
+      profile.education.unshift(newEdu);
     
     profile.save().then(profile => res.json(profile));
     })
@@ -216,7 +216,7 @@ router.delete(
   '/experience/:exp_id', 
   passport.authenticate('jwt', {session: false}), 
   (req, res) => {
-    
+    console.log('++++++++++++++++++++++',req.params);
     Profile.findOne({user: req.user.id}).then(profile => {
       // Get remove index
       const removeIndex = profile.experience
@@ -224,7 +224,7 @@ router.delete(
         .indexOf(req.params.exp_id);
       
       // Splice out of arrya
-      profile.experience.splice(removeIndex);
+      profile.experience.splice(removeIndex,1);
       
       // Save
       profile.save().then(profile => res.json(profile));
@@ -247,7 +247,7 @@ router.delete(
         .indexOf(req.params.edu_id);
       
       // Splice out of arrya
-      profile.education.splice(removeIndex);
+      profile.education.splice(removeIndex,1);
       
       // Save
       profile.save().then(profile => res.json(profile));

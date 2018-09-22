@@ -23,7 +23,7 @@ class AddExperience extends Component {
 		};
 
 		this.onChange = this.onChange.bind(this);
-		this.onCheck = this.onCheck.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 		this.onCheck = this.onCheck.bind(this);
 	}
 
@@ -75,7 +75,7 @@ class AddExperience extends Component {
 							<h1 className="display-4 text-center">Add Experience</h1>
 							<p className="lead text-center">Add any job or position that you have had in the past or current</p>
 							<small className="d-block pb-3">* = required field</small>
-							<form onsubmit={this.onsubmit}>
+							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
 									placeholder="* Company"
 									name="company"
@@ -121,7 +121,7 @@ class AddExperience extends Component {
 										name="current"
 										value={this.state.current}
 										checked={this.state.current}
-										onChange={this.onChange}
+										onChange={this.onCheck}
 										id="current"
 									/>
 									<label htmlFor="current" className="form-check-label">
