@@ -4,7 +4,7 @@ const initialState = {
   profile: null,
   profiles: null,
   loading: false,
-}
+};
 
 export default function(state = initialState, action){
   switch(action.type){
@@ -29,7 +29,7 @@ export default function(state = initialState, action){
       return {
         ...state,
         profile: null
-      }
+      };
     default:
       return state;
   }
